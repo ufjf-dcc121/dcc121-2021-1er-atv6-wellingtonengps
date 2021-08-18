@@ -490,6 +490,24 @@
         <td></td>
       </tr>
     </table>
-    <script></script>
+    <script>
+      const celulas = document.querySelectorAll("td");
+
+      for (let i = 0; i < celulas.length - 1; i++) {
+        if (
+          !celulas[i].classList.contains("tesouro") &&
+          !celulas[i].classList.contains("orcs")
+        ) {
+          celulas[i].classList.add("parede");
+        }
+      }
+
+      document.addEventListener("click", KeyPressed, false);
+
+      function KeyPressed(event) {
+        event.preventDefault();
+        console.log(event.target.className);
+      }
+    </script>
   </body>
 </html>
