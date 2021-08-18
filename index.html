@@ -505,8 +505,19 @@
       document.addEventListener("click", KeyPressed, false);
 
       function KeyPressed(event) {
-        event.preventDefault();
         console.log(event.target.className);
+
+        if (event.target.className == "parede") {
+          event.target.classList.remove("parede");
+        } else if (event.target.className == "orcs") {
+          event.target.classList.remove("orcs");
+          event.target.classList.add("tesouro");
+        } else if (event.target.className == "tesouro") {
+          event.target.classList.remove("tesouro");
+          event.target.classList.add("parede");
+        } else {
+          event.target.classList.add("orcs");
+        }
       }
     </script>
   </body>
