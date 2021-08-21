@@ -494,29 +494,37 @@
       const celulas = document.querySelectorAll("td");
 
       for (let i = 0; i < celulas.length - 1; i++) {
-        if (
-          !celulas[i].classList.contains("tesouro") &&
-          !celulas[i].classList.contains("orcs")
-        ) {
-          celulas[i].classList.add("parede");
+        const c = celulas[i];
+
+        document.addEventListener("click", KeyPressed, false);
+        if (c.classList.length == 0) {
+          c.classList.add("parede");
         }
       }
 
-      document.addEventListener("click", KeyPressed, false);
-
       function KeyPressed(event) {
-        console.log(event.target.className);
+        let target = event.target;
+        console.log(event.target.value);
 
-        if (event.target.className == "parede") {
-          event.target.classList.remove("parede");
-        } else if (event.target.className == "orcs") {
-          event.target.classList.remove("orcs");
-          event.target.classList.add("tesouro");
-        } else if (event.target.className == "tesouro") {
-          event.target.classList.remove("tesouro");
-          event.target.classList.add("parede");
-        } else {
-          event.target.classList.add("orcs");
+        if (target.classList.value == "parede") {
+          target.classList.remove("parede");
+          console.log(target.classList.value);
+        } else if (target.classList.value == "" && target.id != "hero") {
+          target.innerHTML = "O";
+          target.classList.add("orcs");
+          console.log(target.classList.value);
+        } else if (target.classList.value == "orcs" && target.id != "hero") {
+          target.classList.remove("orcs");
+          target.innerHTML = "T";
+          target.classList.add("tesouro");
+          console.log(target.classList.value);
+        } else if (target.classList.value == "tesouro" && target.id != "hero") {
+          target.classList.remove("tesouro");
+          target.innerHTML = "";
+          target.classList.add("parede");
+          console.log(target.classList.value);
+        } else if (target.id == "hero") {
+          target.classList.toggle("parede");
         }
       }
     </script>
