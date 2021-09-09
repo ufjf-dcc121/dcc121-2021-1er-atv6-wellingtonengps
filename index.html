@@ -493,10 +493,10 @@
     <script>
       const celulas = document.querySelectorAll("td");
 
-      for (let i = 0; i < celulas.length - 1; i++) {
+      for (let i = 0; i < celulas.length; i++) {
         const c = celulas[i];
 
-        document.addEventListener("click", KeyPressed, false);
+        c.addEventListener("click", KeyPressed, false);
         if (c.classList.length == 0) {
           c.classList.add("parede");
         }
