@@ -504,25 +504,25 @@
 
       function KeyPressed(event) {
         let target = event.target;
-        console.log(event.target.value);
+        console.log(target.classList.toString());
 
-        if (target.classList.value == "parede") {
+        if (target.classList.contains("parede")) {
           target.classList.remove("parede");
-          console.log(target.classList.value);
-        } else if (target.classList.value == "" && target.id != "hero") {
+          console.log(target.classList.toString());
+        } else if (target.classList.length === 0) {
           target.innerHTML = "O";
           target.classList.add("orcs");
-          console.log(target.classList.value);
-        } else if (target.classList.value == "orcs" && target.id != "hero") {
+          console.log(target.classList.toString());
+        } else if (target.classList.contains("orcs") && target.id != "hero") {
           target.classList.remove("orcs");
           target.innerHTML = "T";
           target.classList.add("tesouro");
-          console.log(target.classList.value);
-        } else if (target.classList.value == "tesouro" && target.id != "hero") {
+          console.log(target.classList.toString());
+        } else if (target.classList.contains("tesouro") && target.id != "hero") {
           target.classList.remove("tesouro");
           target.innerHTML = "";
           target.classList.add("parede");
-          console.log(target.classList.value);
+          console.log(target.classList.toString());
         } else if (target.id == "hero") {
           target.classList.toggle("parede");
         }
